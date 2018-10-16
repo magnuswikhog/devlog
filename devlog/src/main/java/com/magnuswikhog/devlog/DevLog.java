@@ -12,45 +12,46 @@ import java.io.Writer;
 public class DevLog {
     public static boolean loggingEnabled = false;
     public static boolean remoteLoggingEnabled = false;
+    public static String tagPrefix = "";
 
 
     public static void i(@NonNls String tag, @NonNls String string, boolean alwaysLog) {
         if (loggingEnabled || alwaysLog ) {
-            Log.i(tag, string);
+            Log.i(tagPrefix+tag, string);
             if( remoteLoggingEnabled ){
-                RemoteLogger.i(tag, string);
+                RemoteLogger.i(tagPrefix+tag, string);
             }
         }
     }
     public static void e(@NonNls String tag, @NonNls String string, boolean alwaysLog) {
         if (loggingEnabled || alwaysLog ) {
-            Log.e(tag, string);
+            Log.e(tagPrefix+tag, string);
             if( remoteLoggingEnabled ){
-                RemoteLogger.e(tag, string);
+                RemoteLogger.e(tagPrefix+tag, string);
             }
         }
     }
     public static void d(@NonNls String tag, @NonNls String string, boolean alwaysLog) {
         if (loggingEnabled || alwaysLog ) {
-            Log.d(tag, string);
+            Log.d(tagPrefix+tag, string);
             if( remoteLoggingEnabled ){
-                RemoteLogger.d(tag, string);
+                RemoteLogger.d(tagPrefix+tag, string);
             }
         }
     }
     public static void v(@NonNls String tag, @NonNls String string, boolean alwaysLog) {
         if (loggingEnabled || alwaysLog ) {
-            Log.v(tag, string);
+            Log.v(tagPrefix+tag, string);
             if( remoteLoggingEnabled ){
-                RemoteLogger.v(tag, string);
+                RemoteLogger.v(tagPrefix+tag, string);
             }
         }
     }
     public static void w(@NonNls String tag, @NonNls String string, boolean alwaysLog) {
         if (loggingEnabled || alwaysLog ) {
-            Log.w(tag, string);
+            Log.w(tagPrefix+tag, string);
             if( remoteLoggingEnabled ){
-                RemoteLogger.w(tag, string);
+                RemoteLogger.w(tagPrefix+tag, string);
             }
         }
     }
@@ -81,7 +82,7 @@ public class DevLog {
                 try {
                     Writer writer = new StringWriter();
                     e.printStackTrace(new PrintWriter(writer));
-                    RemoteLogger.e("DevLog-StackTrace", writer.toString());
+                    RemoteLogger.e(tagPrefix+"DevLogStackTrace", writer.toString());
                 }
                 catch(Exception ignored){}
             }
