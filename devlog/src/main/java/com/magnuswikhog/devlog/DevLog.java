@@ -16,7 +16,7 @@ public class DevLog {
     private static RemoteLogger sRemoteLogger;
 
 
-    public void setRemoteLogger(RemoteLogger remoteLogger, RemoteLogger.RemoteLoggerInterface aInterface){
+    public static void setRemoteLogger(RemoteLogger remoteLogger, RemoteLogger.RemoteLoggerInterface aInterface){
         sRemoteLogger = remoteLogger;
         sRemoteLogger.setInterface(aInterface);
     }
