@@ -38,7 +38,6 @@ public class RemoteLogger {
     private static final String PREFERENCE_KEY_SEQUENCE_NUMBER = "remote_logger_sequence_number";
 
     private JSONArray mLogEntries;
-    private long mSequenceNumber;
 
     private SharedPreferences mPreferences;
     private SharedPreferences.Editor mPreferenceEditor;
@@ -54,7 +53,6 @@ public class RemoteLogger {
         mPreferenceEditor = mPreferences.edit();
         mRequestQueue = Volley.newRequestQueue(context);
         mLogEntries = new JSONArray();
-        mSequenceNumber = System.currentTimeMillis();
     }
 
 
@@ -96,7 +94,6 @@ public class RemoteLogger {
             long seq = getNextSequenceNumber();
 
             JSONObject logEntry = new JSONObject();
-            logEntry.put("seq", ++mSequenceNumber);
             logEntry.put("timestamp", System.currentTimeMillis());
             logEntry.put("level", level);
             logEntry.put("tag", tag);
